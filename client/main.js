@@ -42,6 +42,35 @@ scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+function addStar() {
+	const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+	const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+	const star = new THREE.Mesh(geometry, material);
+
+	const [x, y, z] = Array(3)
+		.fill()
+		.map(() => THREE.MathUtils.randFloatSpread(100));
+
+	star.position.set(x, y, z);
+	scene.add(star);
+}
+
+Array(200).fill().forEach(addStar);
+
+const spacetexture = new THREE.TextureLoader().load("space.jpg");
+scene.background = spacetexture;
+
+// profile picture
+const angelineeTexture = new THREE.TextureLoader().load("angelinee.png");
+const angelinee = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: angelineeTexture }));
+scene.add(angelinee);
+
+// moon
+const moonTexture = new THREE.TextureLoader().load("moon.jpg");
+const normalTexture = new THREE.TextureLoader().load("normal.jpg");
+const moon = new THREE.Mesh(new THREE.SphereGeometry(3, 32, 32), new THREE.MeshBasicMaterial({ map: moonTexture }));
+scene.add(moon);
+
 function animate() {
 	requestAnimationFrame(animate);
 
