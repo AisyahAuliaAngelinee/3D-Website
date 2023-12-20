@@ -27,14 +27,14 @@ scene.add(torus);
 // ? create lightning into the object
 // ? 0x => Hexidecimal Literal
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(20, 20, 20);
+pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
 
 // ? No need to call the render multiple times
 // ? create the render inside the function to run each time we make any changes
